@@ -4,7 +4,11 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.all
+    @authors = Author.limit(25)
+    respond_to do |format|
+      format.html { @authors }
+      format.json { render json: {success: true, results: @authors.map{|a|{name: a.to_s, value: a.id}}} }
+    end
   end
 
   # GET /authors/1

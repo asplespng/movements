@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :title
-    = f.association :author
-
+    = f.input :author_id, collection: @book.author.present? ? [@book.author] : Author.none
+    -#Author.none, input_html:{ 'data-selected': @book.author.present? ? @book.author.id : nil}
   .form-actions
     = f.button :submit

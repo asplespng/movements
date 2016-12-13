@@ -22,6 +22,7 @@ module Movements
       generate.helper false
       generate.assets false
       generate.jbuilder false
+      generate.test_framework :rspec
       # generate.test_framework :rspec, view_specs: false, controller_specs: false, helper_specs: false, routing_specs: false, request_specs: false
     end
   end
