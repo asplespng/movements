@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.limit(25)
+    @authors = Author.order(:first_name).page(params[:page])
     respond_to do |format|
       format.html { @authors }
       format.json { render json: {success: true, results: @authors.map{|a|{name: a.to_s, value: a.id}}} }
