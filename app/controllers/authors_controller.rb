@@ -4,6 +4,7 @@ class AuthorsController < ApplicationController
   # GET /authors
   # GET /authors.json
   def index
+    # sleep 1
     @authors = Author.order(:first_name).page(params[:page])
     respond_to do |format|
       format.html { @authors }

@@ -3,7 +3,7 @@ $(document).on "turbolinks:load", ->
   if $("#book_author_id").length
     currentPage = 1
     appendToAuthors(currentPage)
-    $("#book_author_id").siblings('.menu').scroll ->
+    $("#book_author_id").siblings('.menu').on 'scroll', ->
       if $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
         appendToAuthors(currentPage += 1)
 
