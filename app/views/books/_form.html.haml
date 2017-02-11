@@ -1,3 +1,4 @@
+- exclude = 'test'
 = simple_form_for(@book) do |f|
   = f.error_notification
 
@@ -7,3 +8,13 @@
     -#Author.none, input_html:{ 'data-selected': @book.author.present? ? @book.author.id : nil}
   .form-actions
     = f.button :submit
+
+
+:javascript
+  $('#new_book').submit(function(e){
+    if ($('#book_title').val() === "#{exclude}"){
+      e.preventDefault();
+      alert('test');
+      return false;
+    }
+  });
