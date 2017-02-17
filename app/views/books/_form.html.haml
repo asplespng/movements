@@ -3,7 +3,20 @@
 
   .form-inputs
     = f.input :title
-    = f.input :author_id, collection: @book.author.present? ? [@book.author] : Author.none, input_html: {}
+    = f.input :author_id, collection: Author.all, input_html: {multiple: 'true'}, as: :semantic_ui_select
+    -#= f.input :author_id, collection: @book.author.present? ? [@book.author] : Author.all.limit(10), as: :semantic_ui_select
     -#Author.none, input_html:{ 'data-selected': @book.author.present? ? @book.author.id : nil}
+    .ui.selection.dropdown
+      %input{:name => "gender", :type => "hidden"}
+      %i.dropdown.icon
+      .default.text Gender
+      .menu
+        .item{"data-value" => "1"}
+          =fa_icon "male"
+          Male
+        .item{"data-value" => "0"}
+          =fa_icon "female"
+          Female
+
   .form-actions
     = f.button :submit
