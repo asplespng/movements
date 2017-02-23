@@ -3,8 +3,7 @@
 
   .form-inputs
     = f.input :title
-    = f.input :author_id, collection: Author.all, input_html: {multiple: 'true'}, as: :semantic_ui_select
-    -#= f.input :author_id, collection: @book.author.present? ? [@book.author] : Author.all.limit(10), as: :semantic_ui_select
+    = f.input :author_id, collection: Author.all, as: :semantic_ui_select, prompt: 'Select author', multiple: true, search: true
     -#Author.none, input_html:{ 'data-selected': @book.author.present? ? @book.author.id : nil}
     .ui.selection.dropdown
       %input{:name => "gender", :type => "hidden"}
